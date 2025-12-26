@@ -163,7 +163,7 @@ button {
 
 <!-- PANTALLA SORPRESA -->
 <div id="lockScreen">
-    <h2>🎁 Tienes un regalo</h2>
+    <h2>🎄 Algo especial para ti ❤️</h2>
     <p>Escribe la contraseña para abrirlo</p>
     <input id="passwordInput" type="password" placeholder="Contraseña">
     <button onclick="unlock()">Abrir regalo</button>
@@ -190,7 +190,13 @@ button {
 <input type="file" accept="image/*" multiple onchange="addImages(event)">
 
 <h3>💌 Carta</h3>
-<textarea id="letter" placeholder="Escribe aquí tu mensaje..."></textarea>
+<div class="preview">
+  <strong>💌 Mensaje:</strong>
+  <p id="previewText">
+    Feliz Navidad ❤️  
+    Mi loquita, mi niña preciosa quiero decirte que te amo mucho, que pases bien en estas fechas tan especiales, que tengas una navidad impresionante como nuestro amor. Mi regalo es algo que siempre tendrás que es mi amor y un compañero de vida al que puedes tomarle la mano y caminar junto a el(ósea yo). Demostremos que somos inseparables, que lograremos nuestras metas juntos, sin miedo, sin arrepentimientos, seamos uno solo juntos y vayamos de la mano, ya que nuestro amor es más fuerte que cualquier cosa ya que nos amamos en los errores, silencios y caídas y nuestro amor sigue creciendo y haciéndose más fuerte cada día. Mi amor por ti es sincero y real y te deseo felices fiestas y que la pases excelente. ATT: Pato loco🦆
+  </p>
+</div>
 
 <div class="preview">
     <strong>Mensaje guardado:</strong>
@@ -225,31 +231,6 @@ for (let i = 0; i < 25; i++) {
     light.style.left = Math.random() * 280 + "px";
     light.style.top = Math.random() * 260 + "px";
     document.getElementById("treeArea").appendChild(light);
-}
-
-// CARTA
-const textarea = document.getElementById("letter");
-const preview = document.getElementById("previewText");
-
-textarea.addEventListener("input", () => {
-    preview.textContent = textarea.value;
-    localStorage.setItem("carta", textarea.value);
-});
-
-// GUARDAR / CARGAR
-function saveMemory() {
-    alert("🎁 Recuerdo guardado con éxito");
-}
-
-function loadMemory() {
-    const savedText = localStorage.getItem("carta");
-    if (savedText) {
-        textarea.value = savedText;
-        preview.textContent = savedText;
-    }
-
-    const imgs = JSON.parse(localStorage.getItem("imagenes") || "[]");
-    imgs.forEach(addImageFromData);
 }
 
 // IMÁGENES
@@ -348,3 +329,4 @@ function enableDrag(el) {
 
 </body>
 </html>
+
